@@ -1,5 +1,3 @@
-# https://www.youtube.com/watch?v=zdMUJJKFdsU
-# 下次從 number 開始
 # https://www.youtube.com/watch?v=2scOhFObj-4 7個小時的課程wtf
 # 打印
 # print('consolas')
