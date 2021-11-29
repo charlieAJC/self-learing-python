@@ -13,7 +13,7 @@ print(y[:3])
 y[2] = 'AAA'
 print(y)
 # # python 是少數可以範圍賦值的語言，但這種情況較少用到
-y[1:3] = ['AAA', 'BBB', 'CCC', 'DDD'] # 1~3(3個位置)可以塞3個以上的資料! 也可以塞少於3個!
+y[1:3] = ['AAA', 'BBB', 'CCC', 'DDD']  # 1~3(3個位置)可以塞3個以上的資料! 也可以塞少於3個!
 print(y)
 
 # array刪除
@@ -21,9 +21,9 @@ del y[1]
 
 # array新增值
 y = [2, 44, 99, 'a']
-y.append('huang') # 新增在array最後
+y.append('huang')  # 新增在array最後
 print(y)
-y.insert(1, 'chen') # 新增在指定位置
+y.insert(1, 'chen')  # 新增在指定位置
 print(y)
 
 # array merge 直接用 + 號!!
@@ -38,8 +38,9 @@ print(x)
 # hihi = (1, 2, 3)
 
 # 字典(dictionary)
-x = ['chen', 23, '042345678', '台中市南屯區'] # 這是 array
-y = {'age': 23, 'tel': '042345678', 'addr': '台中市南屯區', 'name': 'chen'} # 這是 dictionary
+x = ['chen', 23, '042345678', '台中市南屯區']  # 這是 array
+y = {'age': 23, 'tel': '042345678', 'addr': '台中市南屯區',
+     'name': 'chen'}  # 這是 dictionary
 # array vs dict 的取值方法(重要!)
 print(x[0])
 print(y['name'])
