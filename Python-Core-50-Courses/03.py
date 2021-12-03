@@ -18,7 +18,7 @@ print(type(c))    # <class 'str'>
 print(type(d))    # <class 'bool'>
 
 # 類型轉換
-# 註：這並不會改變變數本身的型態
+# 註：除非賦值給原參數，不然這並不會改變變數本身的型態
 a = 100
 b = 12.345
 c = 'hello'

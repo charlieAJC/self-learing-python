@@ -6,3 +6,5 @@
 * Lession 02. print 'hello world'
 * Lession 03. 變數命名&類型
 * Lession 04. 運算符
+* Lession 05. if 判斷
+* Lession 06. for 迴圈
