@@ -30,3 +30,5 @@
     * 3: array, tuple, dictionary 型態操作
     * 4: for 迴圈
     * 5: input(), while 迴圈, try except 例外處理
+* 1205
+    * 1: 
