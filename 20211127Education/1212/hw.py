@@ -7,38 +7,55 @@
 
 # import requests
 import time
+import datetime
 
-# 可提供 input 的參數
-keyword = 'mac 優惠 apple'
-# first_date = '2021-12-12'
-# second_date = '2021-12-01'
-first_date = input('請輸入日期一: ')
-second_date = input('請輸入日期二: ')
-
-# 查詢日期區間的開始日期
-start_date = ''
-# 查詢日期區間的結束日期
-end_date = ''
 # 檢查使用者輸入日期的格式
 input_validate = "%Y-%m-%d"
 # 是否還需要繼續查詢
 search = True
 
-# def validate_input_date():
 
-
-def sort_date():
+def get_legal_input(message, form):
+    ''' 檢查使用者 input 的值是否符合格式
     '''
-    將使用者輸入的日期參數 first_date & second_date 排序後
-    賦值給日期參數 start_date & end_date
-    '''
-    global first_date, second_date, start_date, end_date
-    sort_array = [first_date, second_date]
-    sort_array.sort()
-    # 批量賦值(assign value)的方法
-    start_date, end_date = sort_array
-    print(start_date)
-    print(end_date)
+    while True:
+        value = input(message)
+        if form == 'date':
+            global input_validate
+            try:
+                time.strptime(value, input_validate)
+                break
+            except ValueError:
+                print('請輸入正確的日期格式')
+        elif form == 'string':
+            if value == '':
+                print('請輸入文字')
+            else:
+                break
+    return value
 
 
-sort_date()
+# step1. 要求使用者輸入符合格式的資訊
+keyword = get_legal_input('請輸入要查詢的關鍵字: ', 'string')
+first_date = get_legal_input('請輸入日期一: ', 'date')
+second_date = get_legal_input('請輸入日期二: ', 'date')
+
+# step2. 排序輸入日期成 開始查詢及結束查詢日期
+# 其實可以在 get_legal_input 檢查時間時就轉成符合的格式了(如:2021-12-5 -> 2021-12-05)
+# 這邊直接 sort() 即可
+dates = [datetime.datetime.strptime(ts, input_validate) for ts in [
+    first_date, second_date]]
+dates.sort()
+start_date, end_date = [datetime.datetime.strftime(
+    ts, input_validate) for ts in dates]
+
+
+print('關鍵字: ', keyword)
+print('開始日: ', start_date)
+print('結束日: ', end_date)
+
+# ------ 問題 ------
+# function 註解怎麼寫?
+# 一個檔案的順序? 常數->function
+# pep8的斷行機制
+# ------ 問題 ------
