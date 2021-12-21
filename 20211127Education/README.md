@@ -32,3 +32,15 @@
     * 5: input(), while 迴圈, try except 例外處理
 * 1205
     * 1: 
+* 1212
+    * request 取得資料，用 beautiful soup 分析靜態資料，或分析從 api 取得的 json
+* 1219
+    * 1: 將爬蟲取得的資料存成方便寫入 database 的格式
+    * 2: 連線資料庫
+    * 3: 將 1 & 2 的程式整合
+    * @todo:優化 sql 不要爬到一篇文章就 insert 一次，連線功能模組化
+    * @todo:當資料存在時不要 insert ，參考資料:https://stackoverflow.com/questions/2366813/on-duplicate-key-ignore
+    * sql 匯出:C:\xampp\mysql\bin\mysqldump -u user -puser mdu newsdata > C:\Users\user\Desktop\backup.sql
+    * sql 匯入:mysql -u Username -p DatabaseName < Backup.sql
+    * 4: 抓取靜態網頁資料，以 histock 抓取股票資訊
+    * 5: 破解防爬蟲網頁
