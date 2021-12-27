@@ -27,5 +27,5 @@ html_table = str(soup.select('div#LBlock_8 table.tb-stock.tbChip')[0])
 pandas_table = pd.read_html(html_table)
 securities_data = pandas_table[0].iloc[[0, 2, 4, 6]].values.tolist()
 # ['-367', '-3', '-161', '0', '0.00%', '24743', '65', '14787', '646', '301620', '2', '163', '32602', '0.26%', '6482595', '1091', '11.12%', '124.66', nan, nan]
-# @todo list 裡面的 nan 拿掉
-print(list(itertools.chain.from_iterable(securities_data)))
+# @todo 放棄把 nan 拿掉，在組成 sql insert 字串時再忽略
+securities_data = list(itertools.chain.from_iterable(securities_data))
