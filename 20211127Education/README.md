@@ -44,3 +44,11 @@
     * sql 匯入:mysql -u Username -p DatabaseName < Backup.sql
     * 4: 抓取靜態網頁資料，以 histock 抓取股票資訊
     * 5: 破解防爬蟲網頁
+* 1226
+    * 1: regex
+    * 2: 範例:輸入密碼檢查格式
+    * 3: regex取非json格式的資料，範例:中央氣象局各縣市天氣預報頁面
+    * 4: 範例:日期為今天，取得指定格式的氣象資訊
+    * 5: 排程執行程式
+    * 6: request 加入特定 headers 已通過網站驗證，範例: ptt 八卦版的 18 歲驗證
+    * 7: regex 的特殊用法:取有斷行的文章
