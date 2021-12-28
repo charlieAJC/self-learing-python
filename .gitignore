@@ -49,3 +49,6 @@ Thumbs.db
 *.wmv
 
 .vscode/
+
+# python 存放環境參數的檔案名稱
+settings.py

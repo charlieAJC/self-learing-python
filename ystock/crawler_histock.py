@@ -12,7 +12,8 @@ class histock:
     stock_symbol = ''
     soup = ''
 
-    # 建構式
+    # {Function 建構式}
+    # {Input stock_symbol {string} 股票代號}
     def __init__(self, stock_symbol: str):
         self.stock_symbol = stock_symbol
         self.histock_url = self.histock_url.format(self.stock_symbol)
@@ -33,10 +34,10 @@ class histock:
         single_data = ['-1.3%', '-0.3%', '-1.6%', '-0.5%', '-2.9%', '+1.9%', '+2.4%',
                        '+11.4%', '+15.7%', '-12.1%', '+18%', '+78.7%', '-0.2%', '-1.3%']
         data = ','.join([f"{c.replace('%', '')}" for c in single_data])
-        # @todo ON DUPLICATE KEY UPDATE 後面還要逐個欄位指定...
-        sql = f"INSERT INTO `stock_performance` VALUES (null,'2330','{today_date}'," + \
-            f"{data},'{today_datetime}','{today_datetime}') ON DUPLICATE KEY UPDATE id=id"
+        # 使用 INSERT ... ON DUPLICATE KEY UPDATE 避免資料重複更新
+        sql = f"INSERT INTO `stock_performance` VALUES (null,'{self.stock_symbol}'," + \
+            f"'{today_date}',{data},'{today_datetime}','{today_datetime}') ON DUPLICATE KEY UPDATE id=id"
 
 
 tsmc = histock('2330')
-tsmc.get_page_html()
+tsmc.get_performance()
