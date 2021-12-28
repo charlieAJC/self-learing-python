@@ -1,29 +1,19 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+紀錄學習 Python 寫的 code
 
-### What is this repository for? ###
+### Comments Style ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+[參考資料](https://www.askpython.com/python/python-comments)
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+```
+# {Function Short Description}
+# {Input Arguments {type} details}
+# {Return {type} details}
+# {Exception Details}
+def add_numbers(numbers):
+    sum_numbers = 0
+    for num in numbers:
+        sum_numbers += num
+    return sum_numbers
+```
