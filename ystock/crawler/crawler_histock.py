@@ -1,8 +1,13 @@
-import requests
+from database.database import run_sql
 from bs4 import BeautifulSoup
+import requests
 import pandas as pd
 import itertools
 import datetime
+# import database
+# from database import run_sql
+import sys
+sys.path.insert(0, '..')
 
 
 # 爬蟲取得 histock 個股資訊
@@ -19,9 +24,9 @@ class histock:
         self.histock_url = self.histock_url.format(self.stock_symbol)
         self.soup = BeautifulSoup(requests.get(self.histock_url).text, 'lxml')
 
-    # {Function 取得大盤和各股的近期表現}
-    # {Return list [個股近期表現, 大盤近期表現]}
-    def get_performance(self) -> list:
+    # {Function 紀錄大盤和各股的近期表現}
+    # {Return bool 是否紀錄成功}
+    def record_performance(self) -> bool:
         html_table = str(self.soup.select('table.tb-stock.tbPerform')[0])
         pandas_table = pd.read_html(html_table)
         # 取得個股的近期表現
@@ -31,13 +36,19 @@ class histock:
 
         today_date = datetime.datetime.now().strftime('%Y-%m-%d')
         today_datetime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        single_data = ['-1.3%', '-0.3%', '-1.6%', '-0.5%', '-2.9%', '+1.9%', '+2.4%',
-                       '+11.4%', '+15.7%', '-12.1%', '+18%', '+78.7%', '-0.2%', '-1.3%']
-        data = ','.join([f"{c.replace('%', '')}" for c in single_data])
+        single_string = ','.join(
+            [f"{c.replace('%', '')}" for c in single_data])
+        market_string = ','.join(
+            [f"{c.replace('%', '')}" for c in market_data])
         # 使用 INSERT ... ON DUPLICATE KEY UPDATE 避免資料重複更新
-        sql = f"INSERT INTO `stock_performance` VALUES (null,'{self.stock_symbol}'," + \
-            f"'{today_date}',{data},'{today_datetime}','{today_datetime}') ON DUPLICATE KEY UPDATE id=id"
-
-
-tsmc = histock('2330')
-tsmc.get_performance()
+        # 大盤股票代號設定為 0
+        sql = f"INSERT INTO `stock_performance` VALUES " + \
+            f"(null,'{self.stock_symbol}','{today_date}',{single_string},'{today_datetime}','{today_datetime}')," + \
+            f"(null,'0','{today_date}',{market_string},'{today_datetime}','{today_datetime}') " + \
+            f"ON DUPLICATE KEY UPDATE id=id"
+        # result = database.run_sql(sql)
+        result = run_sql(sql)
+        if (result):
+            print('success')
+        else:
+            print('fail')
