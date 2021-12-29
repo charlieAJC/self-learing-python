@@ -1,13 +1,11 @@
-from database.database import run_sql
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import itertools
 import datetime
-# import database
-# from database import run_sql
 import sys
-sys.path.insert(0, '..')
+sys.path.append("..")
+import database.database as database  # noqa
 
 
 # 爬蟲取得 histock 個股資訊
@@ -43,12 +41,11 @@ class histock:
         # 使用 INSERT ... ON DUPLICATE KEY UPDATE 避免資料重複更新
         # 大盤股票代號設定為 0
         sql = f"INSERT INTO `stock_performance` VALUES " + \
-            f"(null,'{self.stock_symbol}','{today_date}',{single_string},'{today_datetime}','{today_datetime}')," + \
-            f"(null,'0','{today_date}',{market_string},'{today_datetime}','{today_datetime}') " + \
+            f"(null,'0','{today_date}',{market_string},'{today_datetime}','{today_datetime}')," + \
+            f"(null,'{self.stock_symbol}','{today_date}',{single_string},'{today_datetime}','{today_datetime}') " + \
             f"ON DUPLICATE KEY UPDATE id=id"
-        # result = database.run_sql(sql)
-        result = run_sql(sql)
-        if (result):
-            print('success')
-        else:
+        result = database.run_sql(sql)
+        if (result == False):
             print('fail')
+        else:
+            print('success')
