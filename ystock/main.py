@@ -3,7 +3,8 @@ import time
 
 for stock_symbol in ['2330', '0056']:
     histock_class = histock.histock(stock_symbol)
-    histock_class.record_performance()
+    print(histock_class.record_performance())
+    print(histock_class.record_profit())
     time.sleep(1)
 
 # 下面這個寫法好像也不錯

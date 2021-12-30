@@ -44,3 +44,7 @@ import database.database as database
 ```
 如果不想被 pep8 修改順序，可以在 `import database.database` 尾端加入 `# noqa`
 [參考資料](https://stackoverflow.com/questions/36827962/pep8-import-not-at-top-of-file-with-sys-path)
+
+### 正則規則 ###
+具有正負號及小數點的百分比字串：`-?([0]{1}|[1-9]{1}\d*)(\.\d+)?%`
+不知道什麼時候會用到，總之先存著，嘿嘿

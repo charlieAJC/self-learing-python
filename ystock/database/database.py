@@ -19,7 +19,9 @@ def run_sql(sql):
         cursor.execute(sql)
         db.commit()
         data = cursor.fetchall()
-    except:
+    except Exception as err:
+        print(f"run_sql error: {err}")
+        print(f"sql:{sql}")
         db.rollback()
         data = False
 
