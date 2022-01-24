@@ -92,12 +92,3 @@ print(json.dumps(crawler))
 
 # Python中time和datetime的区别与联系
 # https://blog.csdn.net/haox0/article/details/102741483
-# ------ 問題 ------
-# function 註解怎麼寫? -> https://www.askpython.com/python/python-comments
-# 一個檔案的順序? 常數->function
-# pep8的斷行機制
-# 如果 sorted(list) 不接值，記憶體裡面會怎麼記錄這個參數，他就沒有 key 耶?
-# 什麼狀況下才會在爬蟲時就爬取特定時間區間的資料?
-# 布署建議
-# function 模組化
-# ------ 問題 ------
